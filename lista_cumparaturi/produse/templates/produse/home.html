@@ -1,0 +1,41 @@
+{% extends 'produse/base.html' %}
+
+<!--<style>-->
+<!--        tabel, th, td {-->
+<!--            border: 1px solid black;-->
+<!--        }-->
+<!--</style>-->
+{% block content %}
+    <h2>Introduceti produsele aici</h2>
+    <br>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>PRODUS</th>
+                <th>STATUS</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% if products %}
+                {% for product in products %}
+                    <tr>
+                        <td>{{ product.id }}</td>
+                        <td>{{ product.product }}</td>
+                        <td>{{ product.cumparat }}</td>
+                    </tr>
+                {% endfor %}
+            {% endif %}
+        </tbody>
+    </table>
+    <form method="POST">
+        {% csrf_token %}
+        {{form.as_p}}
+<!--      <div class="mb-3">-->
+<!--        <label class="form-label">Produs</label>-->
+<!--        <input type="text" class="form-control">-->
+<!--      </div>-->
+      <button type="submit" class="btn btn-dark">Submit</button>
+    </form>
+
+{% endblock %}

@@ -1,0 +1,7 @@
+tabel, th, td {
+           border: 1px solid black;
+      }
+
+.line-through {
+    text-decoration: line-through;
+}
