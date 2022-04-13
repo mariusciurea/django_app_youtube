@@ -37,6 +37,21 @@ def home(request):
         context = {'form': form, 'products': products}
         return render(request, 'produse/home.html', context)
 
+def delete(reguest, id):
+    product = Products.objects.get(pk=id)
+    product.delete()
+    return redirect('home')
+
+def change_status(request, id):
+    product = Products.objects.get(pk=id)
+    if product.cumparat:
+        product.cumparat = False
+        product.save()
+    else:
+        product.cumparat = True
+        product.save()
+
+    return redirect('home')
 
 def about(request):
     # return HttpResponse('<h2>About my app</h2>')
